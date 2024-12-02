@@ -41,12 +41,16 @@ const random = document.querySelector(".random-btn");
 
 let current = 0;
 
-window.addEventListener("DOMContentLoaded", function () {
-  const item = reviews[current];
+function showPerson(person) {
+  const item = reviews[person];
   img.src = item.img;
   name.textContent = item.name;
   job.textContent = item.job;
   info.textContent = item.text;
+}
+
+window.addEventListener("DOMContentLoaded", function () {
+  showPerson(current);
 });
 
 prev.addEventListener("click", function () {
@@ -54,11 +58,7 @@ prev.addEventListener("click", function () {
   if (current < 0) {
     current = reviews.length - 1;
   }
-  const item = reviews[current];
-  img.src = item.img;
-  name.textContent = item.name;
-  job.textContent = item.job;
-  info.textContent = item.text;
+  showPerson(current);
 });
 
 next.addEventListener("click", function () {
@@ -66,20 +66,12 @@ next.addEventListener("click", function () {
   if (current > reviews.length - 1) {
     current = 0;
   }
-  const item = reviews[current];
-  img.src = item.img;
-  name.textContent = item.name;
-  job.textContent = item.job;
-  info.textContent = item.text;
+  showPerson(current);
 });
 
 random.addEventListener("click", function () {
   current = Math.floor(Math.random() * reviews.length);
   console.log(current);
 
-  const item = reviews[current];
-  img.src = item.img;
-  name.textContent = item.name;
-  job.textContent = item.job;
-  info.textContent = item.text;
+  showPerson(current);
 });
